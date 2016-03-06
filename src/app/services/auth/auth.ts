@@ -21,7 +21,7 @@ export class Auth {
 
     return this.http.post('/api/sign_up', params, {headers: this.defaultHeaders()})
       .map((response: Response) => {
-        this.localStorage.setItem('currentUserId', JSON.parse(response._body).id);
+        this.localStorage.setItem('currentUserId', response.json().id);
         return response;
       });
   }
@@ -31,7 +31,7 @@ export class Auth {
 
     return this.http.post('/api/sign_in', params, {headers: this.defaultHeaders()})
       .map((response: Response) => {
-        this.localStorage.setItem('currentUserId', JSON.parse(response._body).id);
+        this.localStorage.setItem('currentUserId', response.json().id);
         return response;
       });
   }
@@ -42,5 +42,9 @@ export class Auth {
         this.localStorage.removeItem('currentUserId');
         return response;
       });
+  }
+
+  isUserLoggedIn(): Boolean {
+    return !!this.localStorage.getItem('currentUserId');
   }
 }

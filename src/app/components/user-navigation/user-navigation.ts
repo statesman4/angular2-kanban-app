@@ -7,12 +7,11 @@ import {Auth} from '../../services/auth/auth';
   selector: 'user-navigation',
   template: `
     <nav>
-      <a [routerLink]="['Home']">Home</a>
-      <a [routerLink]="['About']">About</a>
-      <a [routerLink]="['SignIn']">Sign in</a>
-      <a [routerLink]="['SignUp']">Sign up</a>
-
-      <a (click)="signOut()">Sign out</a>
+      <a [routerLink]="['Home']" *ngIf="auth.isUserLoggedIn()">Home</a>
+      <a [routerLink]="['About']" *ngIf="auth.isUserLoggedIn()">About</a>
+      <a [routerLink]="['SignIn']" *ngIf="!auth.isUserLoggedIn()">Sign in</a>
+      <a [routerLink]="['SignUp']" *ngIf="!auth.isUserLoggedIn()">Sign up</a>
+      <a (click)="signOut()" href="#" *ngIf="auth.isUserLoggedIn()">Sign out</a>
     </nav>
   `,
   directives: [...ROUTER_DIRECTIVES],
