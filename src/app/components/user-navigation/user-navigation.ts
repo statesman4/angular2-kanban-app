@@ -5,7 +5,16 @@ import {Auth} from '../../services/auth/auth';
 
 @Component({
   selector: 'user-navigation',
-  template: require('./user-navigation.html'),
+  template: `
+    <nav>
+      <a [routerLink]="['Home']">Home</a>
+      <a [routerLink]="['About']">About</a>
+      <a [routerLink]="['SignIn']">Sign in</a>
+      <a [routerLink]="['SignUp']">Sign up</a>
+
+      <a (click)="signOut()">Sign out</a>
+    </nav>
+  `,
   directives: [...ROUTER_DIRECTIVES],
   providers: [Auth],
 })
