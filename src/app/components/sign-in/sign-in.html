@@ -1,0 +1,17 @@
+<h1>Sign in</h1>
+
+<div>
+  <form (submit)="loginForm.valid && signIn()" [ngFormModel]="loginForm">
+    <div class="input">
+      <labal>E-mail:</labal>
+      <input type="text" name="email" ngControl="email"/>
+    </div>
+
+    <div class="input">
+      <labal>Password:</labal>
+      <input type="password" name="password" ngControl="password"/>
+    </div>
+
+    <button>Sign in</button>
+  </form>
+</div>

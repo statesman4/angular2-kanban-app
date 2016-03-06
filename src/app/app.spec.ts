@@ -32,7 +32,6 @@ describe('App', () => {
   ]);
 
   it('should have an url', inject([App], (app:App) => {
-    expect(app.url).toEqual('https://github.com/ocombe/ng2-webpack');
   }));
 
 });

@@ -1,32 +1,32 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import '../style/app.scss';
 
 import {Api} from './services/api/api';
+import {UserNavigation} from './components/user-navigation/user-navigation';
 import {Home} from './components/home/home';
-import {About} from "./components/about/about";
+import {About} from './components/about/about';
+import {SignIn} from './components/sign-in/sign-in';
+import {UserSignUp} from './components/user-sign-up/user-sign-up';
 
-/*
- * App Component
- * Top Level Component
- */
+// <app>
+// </app>
+
 @Component({
-  selector: 'app', // <app></app>
+  selector: 'app',
   providers: [...FORM_PROVIDERS, Api],
-  directives: [...ROUTER_DIRECTIVES],
-  pipes: [],
+  directives: [UserNavigation, ...ROUTER_DIRECTIVES],
   styles: [require('./app.scss')],
   template: require('./app.html')
 })
 @RouteConfig([
   {path: '/', component: Home, name: 'Home'},
-  {path: '/About', component: About, name: 'About'}
+  {path: '/About', component: About, name: 'About'},
+  {path: '/sign_in', component: SignIn, name: 'SignIn'},
+  {path: '/sign_up', component: UserSignUp, name: 'SignUp'}
 ])
 export class App {
-  url: string = 'https://github.com/ocombe/ng2-webpack';
-
-  constructor(public api: Api) {
-  }
+  constructor(public api: Api) {}
 }
