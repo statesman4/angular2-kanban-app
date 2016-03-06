@@ -10,6 +10,7 @@ import {Home} from './components/home/home';
 import {About} from './components/about/about';
 import {SignIn} from './components/sign-in/sign-in';
 import {UserSignUp} from './components/user-sign-up/user-sign-up';
+import {BoardsList} from './components/boards-list/boards-list';
 
 // <app>
 // </app>
@@ -25,7 +26,8 @@ import {UserSignUp} from './components/user-sign-up/user-sign-up';
   {path: '/', component: Home, name: 'Home'},
   {path: '/About', component: About, name: 'About'},
   {path: '/sign_in', component: SignIn, name: 'SignIn'},
-  {path: '/sign_up', component: UserSignUp, name: 'SignUp'}
+  {path: '/sign_up', component: UserSignUp, name: 'SignUp'},
+  {path: '/boards', component: BoardsList, name: 'BoardsList'}
 ])
 export class App {
   constructor(public api: Api) {}
