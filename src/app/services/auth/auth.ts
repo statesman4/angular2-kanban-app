@@ -52,10 +52,11 @@ export class Auth {
   checkServerAuthentication(): any {
     this.http.get('/api/status', {headers: this.defaultHeaders()})
       .subscribe((response: Response) => {
-        if(response.json() == 'UserNotLoggedIn')
+        if(response.json() === 'UserNotLoggedIn') {
           this.localStorage.removeItem('currentUserId');
-        else
+        } else {
           this.localStorage.setItem('currentUserId', parseInt(response.json()));
-      })
+        }
+      });
   }
 }
