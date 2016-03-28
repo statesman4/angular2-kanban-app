@@ -5,7 +5,8 @@ import {LocalStorage} from '../local-storage/local-storage';
 
 @Injectable()
 export class Auth {
-  constructor(public http: Http, public localStorage: LocalStorage) {}
+  constructor(public http: Http, public localStorage: LocalStorage) {
+  }
 
   defaultHeaders(): Headers {
     let headers: Headers = new Headers();
@@ -46,5 +47,15 @@ export class Auth {
 
   isUserLoggedIn(): Boolean {
     return !!this.localStorage.getItem('currentUserId');
+  }
+
+  checkServerAuthentication(): any {
+    this.http.get('/api/status', {headers: this.defaultHeaders()})
+      .subscribe((response: Response) => {
+        if(response.json() == 'UserNotLoggedIn')
+          this.localStorage.removeItem('currentUserId');
+        else
+          this.localStorage.setItem('currentUserId', parseInt(response.json()));
+      })
   }
 }
