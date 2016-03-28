@@ -14,4 +14,8 @@ export class Api {
         return res.json().map((object: any) => new Board(object));
       });
   }
+
+  createBoard(boardParams: Object): Observable<any> {
+    return this.auth.http.post('/api/boards', JSON.stringify(boardParams), {headers: this.auth.defaultHeaders()});
+  }
 }

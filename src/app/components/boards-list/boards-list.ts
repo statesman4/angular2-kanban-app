@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Board} from '../../models/board';
 import {Api} from "../../services/api/api";
 import {NgFor} from "angular2/common";
+import {ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
   selector: 'boards-list',
@@ -16,9 +17,11 @@ import {NgFor} from "angular2/common";
           {{ board.description }}
         </li>
       </ul>
+      
+      <a [routerLink]="['NewBoard']">Add a new board</a>
     </div>
   `,
-  directives: [NgFor]
+  directives: [NgFor, ...ROUTER_DIRECTIVES]
 })
 export class BoardsList {
   public boards: Board[];
